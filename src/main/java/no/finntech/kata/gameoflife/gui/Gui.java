@@ -1,9 +1,6 @@
 package no.finntech.kata.gameoflife.gui;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -15,9 +12,6 @@ public class Gui {
 
     private final GameOfLife gameOfLife;
     private volatile boolean [][] currentBoard;
-
-    private JButton b;
-    private JTextField t;
 
     public static void main(String[] args) throws InterruptedException {
         Gui gui = new Gui(new GameOfLifeRandomImpl(), new boolean[50][50]);
@@ -32,22 +26,11 @@ public class Gui {
 
     public void display() throws InterruptedException {
 
-        JFrame myWindow = new JFrame("This is my window");
+        JFrame myWindow = new JFrame("World");
 
         //myWindow.setSize(800, 800);
         //myWindow.getContentPane().setLayout(new BorderLayout());
         myWindow.getContentPane().setLayout(new FlowLayout());
-
-        b = new JButton("Load");
-        t = new JTextField(60);
-        myWindow.getContentPane().add(b);
-        myWindow.getContentPane().add(t);
-
-        b.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                t.setText ("Game of life");
-            }
-        });
 
         //GameOfLife model = new GameOfLife(5);
         GameOfLifeTableModel model = new GameOfLifeTableModel();
