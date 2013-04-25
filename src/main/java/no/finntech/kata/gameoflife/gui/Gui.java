@@ -24,9 +24,10 @@ public class Gui {
         gui.display();
     }
 
-    public Gui(final GameOfLife gameOfLife, final boolean[][] startBoard) {
+    public Gui(final GameOfLife gameOfLife, final boolean[][] initialBoard) {
         this.gameOfLife = gameOfLife;
-        this.currentBoard = startBoard;
+        this.gameOfLife.init(initialBoard);
+        this.currentBoard = initialBoard;
     }
 
     public void display() throws InterruptedException {
@@ -61,43 +62,6 @@ public class Gui {
             table.getColumnModel().getColumn(i).setMaxWidth(5);
         }
 
-        /*table.getColumnModel().getColumn(0).setMaxWidth(5);
-        table.getColumnModel().getColumn(1).setMaxWidth(5);
-        table.getColumnModel().getColumn(2).setMaxWidth(5);
-        table.getColumnModel().getColumn(0).setMinWidth(5);
-        table.getColumnModel().getColumn(1).setMinWidth(5);
-        table.getColumnModel().getColumn(2).setMinWidth(5);*/
-
-
-
-        /*DefaultTableModel model = new DefaultTableModel();
-        JTable tabla = new JTable(model);
-        model.addColumn("etiqueta columna 1");
-        model.addColumn("etiqueta columna 2");
-        Object [] fila = new Object[2];
-        fila[0] = "dato columna 1";
-        fila[1] = "dato columna 3";
-        fila[0] = "dato columna 1";
-        fila[1] = "dato columna 3";
-
-        model.addRow(fila); // Añade una fila al final
-        model.addRow(fila); // Añade una fila al final
-        model.addRow(fila); // Añade una fila al final
-        model.addRow(fila); // Añade una fila al final
-        model.addRow(fila); // Añade una fila al final
-        model.addRow(fila); // Añade una fila al final*/
-
-
-
-        /*model.setValueAt(1, 0, 1);
-        model.setValueAt(1, 2, 1);
-        model.setValueAt(1, 3, 1);
-        model.setValueAt(1, 3, 2);
-        model.setValueAt(1, 2, 2);
-        model.setValueAt(1, 4, 1);
-        model.setValueAt(1, 4, 2);*/
-
-        //modelo.removeRow (0); // Borra la primera fila
         myWindow.getContentPane().add(table);
 
         myWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -106,7 +70,7 @@ public class Gui {
 
         do {
             Thread.sleep(50);
-            currentBoard = gameOfLife.nextGeneration(currentBoard);
+            currentBoard = gameOfLife.nextGeneration();
             table.updateUI();
         } while (true);
     }
