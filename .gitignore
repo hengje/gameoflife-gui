@@ -1,0 +1,8 @@
+*.iml
+*.iws
+*.ipr
+target/
+.idea/
+atlassian-ide-plugin.xml
+*/overlays/
+.DS_Store
