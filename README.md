@@ -19,7 +19,7 @@ Legg til følgende avhengighet i din pom.xml:
 
 Start GUI:
 
-```
+```java
     GameOfLife gameOfLife = new MyGameOfLifeImplementation();
     boolean[][] initialWorld = no.finntech.kata.gameoflife.gui.Worlds.trafficCirle();
     new no.finntech.kata.gameoflife.gui.Gui(gameOfLife, initialWorld).display();
